@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Ad:
+  = @ad.ad
+%p
+  %b Phone:
+  = @ad.phone
+%p
+  %b Price:
+  = @ad.price
+%p
+  %b Price type:
+  = @ad.price_type
+
+= link_to 'Edit', edit_ad_path(@ad)
+\|
+= link_to 'Back', ads_path

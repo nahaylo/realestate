@@ -1,0 +1,24 @@
+// Place all the styles related to the ads controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.data-table { width:100%; border-top:none; clear:both}
+table.data-table td a { text-decoration: none; }
+/*table.data-table thead { border-left:1px solid #005395; border-right:1px solid #005395;}*/
+/*table.data-table thead tr th { background:#005395; color:#7fa9ca;}*/
+table.data-table tbody tr td { padding:8px; border: 1px solid #dddddd; border-top:0px; font-size:90%;}
+/*table.data-table tbody tr td.courier-font { font-family:courier, "fixed width"; font-size:90%;}*/
+/*table.data-table tbody tr.odd td {}*/
+/*table.data-table tbody tr.even td { background:#efefef;}*/
+table.data-table tbody tr:hover td { background:#FFF5BD;}
+/*table.data-table tbody tr td.total { font-weight:bold;}*/
+/*table.data-table tbody tr.suspended td {background:#f28c8f;color:#333;}*/
+/*table.data-table thead tr.cloud_test td {background:#DDDDDD; color:#005395;border-left:1px solid  #DDDDDD; border-right:1px solid #DDDDDD;}*/
+/*table.data-table thead tr.cloud_test td.failed {color: red;}*/
+/*table.data-table thead tr.cloud_test td.success {color:green;}*/
+/*table.data-table tbody tr.suspended:hover td { background:#FFF5BD;}*/
+/*table.data-table tbody tr.do_not_suspend td {background:#e2ffe1;color:#333;}*/
+/*table.data-table tbody tr.do_not_suspend:hover td { background:#FFF5BD;}*/
+/*table.data-table tbody tr.purged td {background:#FC7779;color:#333; text-decoration:line-through;}*/
+/*table.data-table tbody tr.purged:hover td { background:#FFF5BD;}*/
+/*table.data-table tbody tr.purged td.recover {text-decoration:none;}*/

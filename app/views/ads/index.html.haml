@@ -1,0 +1,37 @@
+
+
+%table.data-table
+  %thead
+    %tr
+      %th Type
+      %th{:style => "width: 60%;"} Ad
+      %th{:style => "width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Phone
+      %th Price
+      %th
+      %th Race
+      %th Updated at
+      %th
+
+  - @ads.each do |ad|
+    %tr{ :class => "#{cycle('odd', 'even')}"}
+      %td= ad.ad_type_to_s
+      %td
+        -unless ad.note.blank?
+          %i
+            =ad.note
+          %br
+        = link_to 'open map, ', ad.map_link, :target => "blank" unless ad.map_link.blank?
+        = link_to ad.ad, rate_ad_path(ad), :rel => "facebox"
+      %td= ad.phone
+      %td= link_to ad.price_to_s, rate_ad_path(ad), :rel => "facebox"
+      %td= link_to ad.price_type_to_s, rate_ad_path(ad), :rel => "facebox"
+      %td= link_to ad.rate_to_s, rate_ad_path(ad), :rel => "facebox"
+      %td= ad.updated_at
+      %td
+        = link_to 'Show', ad
+        = link_to 'Edit', edit_ad_path(ad)
+        = link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Ad', new_ad_path

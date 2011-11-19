@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Realestate</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", "#{params[:controller]}/#{params[:action]}" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails realestate: development" product="" version="" jdbc-version="" driver-version="" uuid="5e47edf6-b7e4-46e6-b85f-cc462d7a0b63">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/realestate_development</jdbc-url>
+    <user-name>root</user-name>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.RubyMine32/config/jdbc-drivers/mysql-connector-java-5.1.15-bin.jar</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Rails realestate: production" product="" version="" jdbc-version="" driver-version="" uuid="7b862d54-5f88-458e-83e0-3466ef4ae32d">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/realestate_production</jdbc-url>
+    <user-name>root</user-name>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.RubyMine32/config/jdbc-drivers/mysql-connector-java-5.1.15-bin.jar</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Rails realestate: test" product="" version="" jdbc-version="" driver-version="" uuid="a6554084-ae46-4f55-b3b9-7399360b53f7">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/realestate_test</jdbc-url>
+    <user-name>root</user-name>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.RubyMine32/config/jdbc-drivers/mysql-connector-java-5.1.15-bin.jar</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>

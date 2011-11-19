@@ -1,0 +1,15 @@
+%h2="#{@ad.ad_type_to_s} #{@ad.ad}, #{@ad.phone}"
+%h3="#{@ad.price_to_s} #{@ad.price_type_to_s} #{@ad.rate_to_s}"
+
+%table.data-table
+  %thead
+    %tr
+      %th Price
+      %th
+      %th Created at
+
+  - @prices.each do |price|
+    %tr
+      %td= price.price_to_s
+      %td= price.price_type_to_s
+      %td= price.created_at
