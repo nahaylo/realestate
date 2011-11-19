@@ -23,7 +23,7 @@
         = link_to 'open map, ', ad.map_link, :target => "blank" unless ad.map_link.blank?
         = link_to ad.ad, rate_ad_path(ad), :rel => "facebox"
       %td= ad.phone
-      %td= link_to ad.price_to_s, rate_ad_path(ad), :rel => "facebox"
+      %td= ad.price_to_s
       %td= link_to ad.price_type_to_s, rate_ad_path(ad), :rel => "facebox"
       %td= link_to ad.rate_to_s, rate_ad_path(ad), :rel => "facebox"
       %td= ad.updated_at

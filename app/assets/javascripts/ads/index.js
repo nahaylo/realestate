@@ -9,9 +9,9 @@ $(document).ready(function(){
 			null,
 			null,
 			null,
-			{ "sType": "numeric-comma" },
+			{ "sType": "numeric" },
 			null,
-            null,
+                        null,
 			null,
 			null
 		]

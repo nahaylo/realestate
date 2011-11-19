@@ -17,7 +17,7 @@ class Ad < ActiveRecord::Base
   end
 
   def price_to_s
-    0 == self.price.to_i ? "договірна" : self.price.to_i
+    0 == self.price.to_i ? "-" : self.price.to_i
   end
 
   def price_type_to_s
