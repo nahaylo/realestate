@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114213037) do
+ActiveRecord::Schema.define(:version => 20111125210802) do
 
   create_table "ad_prices", :force => true do |t|
     t.integer  "ad_id"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20111114213037) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "page_id"
+    t.integer  "page_sub_id"
   end
 
 end

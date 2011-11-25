@@ -7,7 +7,7 @@ class Ad < ActiveRecord::Base
 
   validates :ad, :phone, :presence => true
 
-  AD_TYPE    = ['Будинок', '1/2 будинку', '1/3 будинку', '1/4 будинку', 'Котедж', '1/2 котеджу', 'Діл-ку', 'Незав. буд-во']
+  AD_TYPE    = ['Будинок', '1/2 будинку', '1/3 будинку', '1/4 будинку', 'Котедж', '1/2 котеджу', 'Діл-ку', 'Незав. буд-во', '1-кім. кв-ру', '2-кім. кв-ру', '3-кім. кв-ру']
   #TYPE       = ['Житлові будинки та ділянки під забудову --- В області']
   PRICE_TYPE = ['-', 'у.о.', 'грн.']
   RATE_TYPE  = {-1 => 'v', 0 => "=", 1 => "^"}
@@ -71,7 +71,8 @@ class Ad < ActiveRecord::Base
 
     def get_doc(page = "")
       #location.title.mb_chars.downcase
-      @url = URI.escape(Iconv.conv( 'windows-1251', 'utf-8', "http://vashmagazin.ua/cat/catalog/?item_name=#{@location.title}&rubs=0&logic=logic_and&item_price1=від&item_price2=до&page=#{page}"))
+      @url = URI.escape(Iconv.conv( 'windows-1251', 'utf-8', "http://vashmagazin.ua/cat/catalog/?#{@location.page_link}&page=#{page}"))
+#      @url = URI.escape(Iconv.conv( 'windows-1251', 'utf-8', "http://vashmagazin.ua/cat/catalog/?item_name=#{@location.title}&rubs=0&logic=logic_and&item_price1=від&item_price2=до&page=#{page}"))
       f = open(@url, 'User-Agent' => 'Ruby')
       f.rewind
       @doc = Hpricot(Iconv.conv('utf-8', f.charset, f.readlines.join("\n")))

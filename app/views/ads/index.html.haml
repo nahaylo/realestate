@@ -1,4 +1,8 @@
-
+%h2=@location.title
+-for location in @locations
+  =link_to location.title, ads_path(:location_id => location.id)
+  &nbsp; / &nbsp;
+%p
 
 %table.data-table
   %thead
@@ -8,8 +12,9 @@
       %th{:style => "width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Phone
       %th Price
       %th
-      %th Race
+      %th Rate
       %th Updated at
+      %th Created at
       %th
 
   - @ads.each do |ad|
@@ -25,8 +30,12 @@
       %td= ad.phone
       %td= ad.price_to_s
       %td= link_to ad.price_type_to_s, rate_ad_path(ad), :rel => "facebox"
-      %td= link_to ad.rate_to_s, rate_ad_path(ad), :rel => "facebox"
-      %td= ad.updated_at
+      %td{:style=>"white-space: nowrap"}
+        = link_to ad.rate_to_s, rate_ad_path(ad), :rel => "facebox"
+        = "/"
+        = ad.ad_prices.count
+      %td= ad.updated_at.strftime("%Y-%m-%d")
+      %td= ad.created_at.strftime("%Y-%m-%d")
       %td
         = link_to 'Show', ad
         = link_to 'Edit', edit_ad_path(ad)

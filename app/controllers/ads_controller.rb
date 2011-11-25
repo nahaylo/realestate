@@ -2,7 +2,9 @@ class AdsController < ApplicationController
   # GET /ads
   # GET /ads.json
   def index
-    @ads = Ad.all
+    @locations = Location.all
+    @location = params[:location_id].blank? ? Location.first : Location.find(params[:location_id])
+    @ads = Ad.where(:location_id => @location.id)
 
     respond_to do |format|
       format.html # index.html.erb
