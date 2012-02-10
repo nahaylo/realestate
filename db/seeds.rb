@@ -6,7 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-["Пасіки", "Солонка", "Сокільники", "Зубра"].each do |l|
+["Пасіки", "Солонка", "Сокільники", "Зубра", "новобуд"].each do |l|
   Location.find_or_create_by_title l
 end
 
