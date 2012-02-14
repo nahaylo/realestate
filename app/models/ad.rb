@@ -67,7 +67,9 @@ class Ad < ActiveRecord::Base
     def initialize(location, page = "")
       @location = location
       get_doc(page)
-      @pages = (@doc/"td[@bgcolor='#e7e7e7']").length
+      #@pages = (@doc/"td[@bgcolor='#e7e7e7']").length
+      pages = (@doc/"a[@class='pag']/")
+      @pages = pages.blank? ? 0 : Integer(pages.last.to_s)
     end
 
     def get_doc(page = "")
