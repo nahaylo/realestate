@@ -1,10 +1,11 @@
+# encoding: utf-8
 class AdsController < ApplicationController
   # GET /ads
   # GET /ads.json
   def index
     @locations = Location.all
     @location = params[:location_id].blank? ? Location.first : Location.find(params[:location_id])
-    @ads = Ad.where(:location_id => @location.id)
+    @ads = @location.blank? ? [] : Ad.where(:location_id => @location.id)
 
     respond_to do |format|
       format.html # index.html.erb

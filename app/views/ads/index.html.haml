@@ -1,4 +1,6 @@
-%h2=@location.title
+-unless @location.blank?
+  %h2=@location.title
+
 -for location in @locations
   =link_to location.title, ads_path(:location_id => location.id)
   &nbsp; / &nbsp;

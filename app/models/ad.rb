@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Ad < ActiveRecord::Base
   has_many :ad_prices, :order => 'id desc'
   belongs_to :location
