@@ -1,0 +1,41 @@
+%h2=@location.title
+
+%table.data-table
+  %thead
+    %tr
+      %th Type
+      %th{:style => "width: 60%;"} Ad
+      %th{:style => "width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Phone
+      %th Price
+      %th
+      %th Rate
+      %th Updated at
+      %th Created at
+      %th
+
+  - @logs.each do |l|
+    - ad = l[:changed][:ad_obj]
+    %tr{ :class => "#{cycle('odd', 'even')}"}
+      %td= l[:changed][:status].to_s
+      %td= ad.ad_type_to_s
+      %td
+        -unless ad.note.blank?
+          %i
+            =ad.note
+          %br
+        = link_to 'open map, ', ad.map_link, :target => "blank" unless ad.map_link.blank?
+        = link_to ad.ad, rate_ad_path(ad)
+      %td= ad.phone
+      %td= ad.price_to_s
+      %td= link_to ad.price_type_to_s, rate_ad_path(ad)
+      %td{:style=>"white-space: nowrap"}
+        = link_to ad.rate_to_s, rate_ad_path(ad)
+        = "/"
+        = ad.ad_prices.count
+      %td= ad.updated_at.strftime("%Y-%m-%d")
+      %td= ad.created_at.strftime("%Y-%m-%d")
+      %td
+        = link_to 'Show', ad
+        = link_to 'Edit', edit_ad_path(ad)
+        = link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete
+

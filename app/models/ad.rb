@@ -38,14 +38,24 @@ class Ad < ActiveRecord::Base
     end
   end
 
+  # create or update and log it
+  def self.create_or_update(logs, attributes)
+    unless exist?(attributes)
+      ad = create(attributes)
+      attributes[:changed] = { :status => :created, :ad_obj => ad }
+    end
+    logs << attributes if attributes.key?(:changed)
+  end
+
   # if record exists update price if it changes, return false if doesn't
-  def self.exist?(attr)
-    ad = Ad.find_by_ad_and_phone(attr[:ad], attr[:phone])
+  def self.exist?(attributes)
+    ad = Ad.find_by_ad_and_phone(attributes[:ad], attributes[:phone])
     if ad.nil?
       false
     else
-      if ad.price != attr[:price] or ad.price_type != attr[:price_type]
-        ad.update_attributes(:price => attr[:price], :price_type => attr[:price_type])
+      if ad.price != attributes[:price] or ad.price_type != attributes[:price_type]
+        ad.update_attributes(:price => attributes[:price], :price_type => attributes[:price_type])
+        attributes[:changed] = { :status => :price_updated, :ad_obj => ad }
       else
         ad.touch
       end
@@ -58,7 +68,7 @@ class Ad < ActiveRecord::Base
   end
 
   class Fetch
-    attr_accessor :url, :doc, :pages
+    attr_accessor :url, :doc, :pages, :logs
 
     require 'hpricot'
     require 'open-uri'
@@ -70,6 +80,7 @@ class Ad < ActiveRecord::Base
       #@pages = (@doc/"td[@bgcolor='#e7e7e7']").length
       pages = (@doc/"a[@class='pag']/")
       @pages = pages.blank? ? 0 : Integer(pages.last.to_s)
+      @logs = []
     end
 
     def get_doc(page = "")
@@ -116,7 +127,9 @@ class Ad < ActiveRecord::Base
               :price_type => (title.parent/"/span/")[0].nil? ? 0 : PRICE_TYPE.index((title.parent/"/span/").last.to_html.strip)
             }
             pp attr
-            Ad.create(attr) unless Ad.exist?(attr)
+        
+            Ad.create_or_update(self.logs, attr)
+            #d.create(attr) unless Ad.exist?(attr)
           end
         end
       end
