@@ -41,10 +41,14 @@ class Ad < ActiveRecord::Base
   # create or update and log it
   def self.create_or_update(logs, attributes)
     unless exist?(attributes)
-      ad = create(attributes)
+      ad = create!(attributes)
+    
+      # TODO: can't parse phone for some reason, need to take a look on this
       attributes[:changed] = { :status => :created, :ad_obj => ad }
     end
     logs << attributes if attributes.key?(:changed)
+  rescue => e
+    puts "Couldn't add ad: #{e.message}"
   end
 
   # if record exists update price if it changes, return false if doesn't
