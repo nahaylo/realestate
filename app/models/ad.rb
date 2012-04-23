@@ -91,7 +91,7 @@ class Ad < ActiveRecord::Base
       #location.title.mb_chars.downcase
       @url = URI.escape(Iconv.conv( 'windows-1251', 'utf-8', "http://vashmagazin.ua/cat/catalog/?#{@location.page_link}&page=#{page}"))
 #      @url = URI.escape(Iconv.conv( 'windows-1251', 'utf-8', "http://vashmagazin.ua/cat/catalog/?item_name=#{@location.title}&rubs=0&logic=logic_and&item_price1=від&item_price2=до&page=#{page}"))
-      f = open(@url, 'User-Agent' => 'Ruby')
+      f = open(@url, 'User-Agent' => '4.0 под Windows XP — Mozilla/5.0 (Windows; I; Windows NT 5.1; ru; rv:1.9.2.13) Gecko/20100101 Firefox/4.0')
       f.rewind
       @doc = Hpricot(Iconv.conv('utf-8', f.charset, f.readlines.join("\n")))
     end
